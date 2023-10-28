@@ -22,6 +22,12 @@ body {
     height: 100%;
 }
 
+canvas,
+.p-chart  {
+    display: flex !important;
+    z-index: 0;
+}
+
 .wrapper {
     min-height: 100%;
     display: flex;

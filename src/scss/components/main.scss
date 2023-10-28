@@ -5,6 +5,7 @@
     justify-content: center;
     flex-direction: column;
     @include adaptiveValue('gap',48,24);
+    z-index: -1;
 }
 
 .main-block{
