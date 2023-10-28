@@ -2,7 +2,9 @@
     &__container{
         display: flex;
         justify-content: space-between;
-        padding: 24px 48px;
+        padding-top: 24px;
+        @include adaptiveValue('padding-right', 48, 24);
+        @include adaptiveValue('padding-left', 48, 24);
         align-items: center;
         max-width: 100%;
     }
@@ -13,5 +15,118 @@
         display: flex;
         gap: rem(16);
         align-items: center;
+    }
+
+    &__menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100%;
+        transition: right 0.2s ease 0s;
+        display: flex;
+        justify-content: end;
+        .menu__list {
+            overflow: auto;
+            flex-direction: column;
+            align-items: start;
+            padding: rem(99) rem(48) rem(48) rem(48);
+            background-color: $colors-background2;
+            width: rem(324);
+        }
+        .menu__link {
+            color: white;
+        }        
+        &._active {
+            right: 0%;
+        }
+        @media (max-width: em(339.98)) {
+            width: 100%;
+            .menu__list {
+                width: 100%;
+                padding: rem(99) rem(48) rem(48) rem(24);
+            }
+        }
+    }
+
+    &__menu-icon {
+        display: block;
+        z-index: 5;
+        position: relative;
+        width: rem(24);
+        height: rem(16);
+        cursor: pointer;
+        span,
+        &::before,
+        &::after {
+            background-color: white;
+            content: "";
+            left: 0;
+            position: absolute;
+            height: rem(2);
+            width: 100%;
+            transition: all 0.2s ease 0s;
+        }
+        &::before {
+            top: 0;
+        }
+        &::after {
+            bottom: 0;
+        }
+        span {
+            top: calc(50% - rem(1));
+        }
+
+        &._active span {
+            transform: scale(0) translate(0px, 50%);
+        }
+        &._active::before {
+            top: 50%;
+            transform: rotate(-45deg) translate(0px, -50%);
+        }
+        &._active::after {
+            transform: scale(0) translate(0px, 50%);
+            bottom: 50%;
+            transform: rotate(45deg) translate(0px, 50%);
+        }
+
+        &._active::before,
+        &._active::after,
+        &._active span {
+            background-color: white;
+        }
+    }
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    &__list {
+        display: flex;
+        flex-direction: row;
+        gap: rem(24);
+    }
+
+    &__link {
+        font-size: rem(20);
+        font-weight: 500;
+        font-size: rem(14);
+        &:hover{
+            cursor: pointer;
+        }
+    }
+
+    &__link.menu__link_active{
+        font-weight: 600;
+    }
+
+    &__title {
+        position: absolute;
+        top: rem(24+4.5);
+        left: rem(48);
+        @media (max-width: em(339.98)){
+            left: rem(24);
+        }
     }
 }
