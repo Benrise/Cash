@@ -1,0 +1,16 @@
+.header {
+    &__container{
+        display: flex;
+        justify-content: space-between;
+        padding: 24px 48px;
+        align-items: center;
+        max-width: 100%;
+    }
+    &__page-info{
+        @include adaptiveValue('font-size', 16, 12);
+    }
+    &__media-burger{
+        display: flex;
+        gap: rem(16);
+    }
+}

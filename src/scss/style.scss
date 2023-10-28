@@ -6,7 +6,9 @@
 
 
 body {
+    color: white;
     font-family: "Inter", "sans-serif";
+    font-weight: 400;
     font-size: rem(20);
     background-color: $colors-background;
     &._lock {
@@ -42,3 +44,9 @@ body {
 @import '@/scss/components/header.scss';
 @import '@/scss/components/main.scss';
 @import '@/scss/components/footer.scss';
+
+@import '@/scss/pages/start-page.scss';
+
+@import 'primevue/resources/themes/bootstrap4-light-blue/theme.css';
+@import 'primeicons/primeicons.css';
+@import 'primeflex/primeflex.scss';

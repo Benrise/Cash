@@ -1,0 +1,20 @@
+.footer {
+    &__container {
+        padding: 24px;
+        margin-top: 128px;
+        font-size: rem(10);
+        max-width: 100%;
+    }
+    &__links {
+        display: flex;
+        @include adaptiveValue('gap', 24, 12);
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    &__link{
+        text-align: center;
+        line-height: 130%;
+    }
+}

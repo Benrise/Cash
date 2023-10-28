@@ -1,7 +1,32 @@
 .main {
     flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .main-block{
-    
+    &__container{
+        display: flex;
+        flex-direction: column;
+        @include adaptiveValue('gap', 48, 24);
+        padding: rem(22);
+    }
+    &__title{
+        @include adaptiveValue('font-size', 36, 18);
+        font-weight: 500;
+    }
+    &__elements{
+        display: flex;
+        flex-direction: column;
+        gap: rem(10);
+    }
+
+    &__header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: rem(8);
+    }
+
 }
