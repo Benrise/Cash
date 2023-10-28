@@ -29,8 +29,9 @@ body {
 }
 
 [class*="__container"] {
-    max-width: rem(960);
+    max-width: rem($containerWidth);
     margin: 0 auto;
+    padding: rem(48);
 }
 
 [class*="font-weigh-regular"] {
@@ -46,6 +47,7 @@ body {
 @import '@/scss/components/footer.scss';
 
 @import '@/scss/pages/start-page.scss';
+@import '@/scss/pages/dashboard.scss';
 
 @import 'primevue/resources/themes/bootstrap4-light-blue/theme.css';
 @import 'primeicons/primeicons.css';

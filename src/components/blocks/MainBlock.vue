@@ -9,12 +9,17 @@ export default {
     center: {
         type: Boolean,
         default: false
-    }
+    },
+    border: {
+        type: Boolean,
+        default: false
+    },
   },
   computed: {
     containerClasses(){
         return {
             'align-items-center': this.center,
+            'border-solid border-gray-800': this.border
         }
     }
   }

@@ -1,12 +1,12 @@
 <template>
     <header class="header">
         <div class="header__container">
-            <div class="header__page-info">
+            <router-link to="/" class="header__page-info">
                 Главная
-            </div>
+            </router-link>
             <div class="header__media-burger">
                 <a href="" class="z-5">
-                    <img src="public/images/svg/telegram-header.svg">
+                    <img src="/images/svg/telegram-header.svg">
                 </a>
                 <div class="header__menu-icon" @click="toggleMenu" :class="{ '_active': isMenuOpen }"><span></span></div>
             </div>

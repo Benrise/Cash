@@ -3,10 +3,11 @@
         display: flex;
         justify-content: space-between;
         padding-top: 24px;
+        padding-bottom: 24px;
         @include adaptiveValue('padding-right', 48, 24);
         @include adaptiveValue('padding-left', 48, 24);
         align-items: center;
-        max-width: 100%;
+        max-width: 100%
     }
     &__page-info{
         @include adaptiveValue('font-size', 16, 12);
@@ -52,8 +53,8 @@
         display: block;
         z-index: 5;
         position: relative;
-        width: rem(24);
-        height: rem(16);
+        width: rem(20);
+        height: rem(12);
         cursor: pointer;
         span,
         &::before,

@@ -1,0 +1,64 @@
+.chart {
+    display: flex;
+    flex-direction: column;
+    gap: rem(32);
+    padding: rem(48);
+    background-color: $colors-background2;
+    border-radius: 24px;
+    &__header {
+        display: flex;
+        flex-direction: column;
+        gap: rem(12);
+    }
+    &__hedaer-title {
+        font-size: rem(20);
+    }
+    &__header-value {
+        font-size: rem(32);
+    }
+    &__header-footnote {
+        font-size: rem(12);
+        color: gray;
+    }
+    &__line{
+        height: rem(1);
+        background-color: $colors-gray;
+    }
+}
+
+.enroll {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: $colors-background2;
+    border-radius: rem(16);
+    padding: rem(24);
+
+    &__date{
+        display: flex;
+        flex-direction: column;
+        gap: rem(12);
+    }
+
+    &__day{
+        font-size: rem(18);
+        font-weight: 600;
+    }
+
+    &__hour{
+        font-size: rem(14);
+    }
+
+    &__operation{
+        font-size: rem(18);
+        font-weight: 600; 
+    }
+
+    &__value{
+        font-size: rem(18);
+        font-weight: 600;
+        color: $colors-success-600;
+    }
+}

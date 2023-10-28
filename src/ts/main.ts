@@ -7,4 +7,7 @@ import PrimeVue from 'primevue/config';
 
 const app = createApp(App)
 
-app.use(router).use(PrimeVue).mount('#app')
+app
+    .use(router)
+    .use(PrimeVue)
+    .mount('#app')
