@@ -1,0 +1,22 @@
+$colors-background: #181A20;
+$colors-gray: #424347;
+$colors-background2: #15171D;
+$colors-success-600: #11D100;
+$colors-fail-600: #FF0000;
+
+$minWidth: 280;
+
+$maxWidth: 1920;
+
+$maxWidthContainer: 950;
+
+$containerPadding: 30;
+
+$containerWidth: $maxWidthContainer + $containerPadding;
+
+
+$pc: em($containerWidth);
+$tablet: em(1091.98);
+$mobile: em(767.98);
+$mobileSmall: em(479.98);
+$mobileXSmall: em(281.98);
