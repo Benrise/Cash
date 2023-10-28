@@ -35,16 +35,39 @@
 import MainBlock from "@/components/blocks/MainBlock.vue";
 import Chart from 'primevue/chart';
 import Enroll from '@/components/blocks/Enroll.vue';
-import { reactive, ref, onMounted } from "vue";
+import dayjs from 'dayjs';
+import { ref, onMounted, computed } from "vue";
 
 const chartData = ref();
 const chartOptions = ref();
-let historyEnrollsData = ref()
+const historyEnrollsData = ref()
+const totalAmount = ref()
+const monthForward = ref()
+
 
 onMounted(() => {
-    chartData.value = setChartData();
     chartOptions.value = setChartOptions();
+    monthForward.value = getMonthForward();
+    fetchChartData();
+    fetchEnrolls();
+});
 
+
+const getMonthForward = () => {
+    
+    let daysArray = []
+    
+    for (let i = 30; i > 2; i -= 3) {
+        let date = dayjs().subtract(i, 'days')
+        daysArray.push(date.format('MMM D'))
+    }
+
+    daysArray.push(dayjs().format('MMM D'))
+
+    return daysArray
+}
+
+const fetchEnrolls = () => {
     const url = 'https://646897f760c8cb9a2cad369c.mockapi.io/resource'
     const response = fetch(url, {
         method: 'GET',
@@ -55,48 +78,63 @@ onMounted(() => {
         }
     }).then(data => {
         historyEnrollsData.value = data
-        console.log(typeof(historyEnrollsData.value))
+    })
+    .catch(error => {
+        console.log(error);
+    })
+    Promise.resolve(response)
+}
+
+const fetchChartData = () => {
+    const documentStyle = getComputedStyle(document.documentElement);
+    const url = 'https://646897f760c8cb9a2cad369c.mockapi.io/resource2'
+    const response = fetch(url, {
+        method: 'GET',
+        headers: {'content-type':'application/json'},
+    }).then(res => {
+        if (res.ok) {
+            return res.json();
+        }
+    }).then(data => {
+        //Future working resource for data
+        const mockData = {
+            labels: monthForward,
+            datasets : [
+                {
+                    label: 'Евро',
+                    data: [65, 59, 80, 81, 56, 55, 40, 40, 19, 40, 27],
+                    fill: true,
+                    tension: 0.4,
+                    borderColor: documentStyle.getPropertyValue('--red-500'),
+                    backgroundColor: 'rgba(249,65,68,0.2)'
+                },
+                {
+                    label: 'Доллар',
+                    data: [28, 29, 40, 19, 40, 27, 26, 65, 59, 80, 81],
+                    fill: true,
+                    tension: 0.4,
+                    borderColor: documentStyle.getPropertyValue('--yellow-500'),
+                    backgroundColor: 'rgba(249,199,79,0.2)'
+                },
+                {
+                    label: 'Рубль',
+                    data: [12, 51, 62, 33, 21, 62, 45, 40, 27, 26, 1],
+                    fill: true,
+                    borderColor: documentStyle.getPropertyValue('--orange-500'),
+                    tension: 0.4,
+                    backgroundColor: 'rgba(255,167,38,0.2)'
+                }
+            ]
+        }
+        chartData.value = mockData;
     })
     .catch(error => {
         console.log(error);
     })
     
     Promise.resolve(response)
-    
-});
+}
 
-const setChartData = () => {
-    const documentStyle = getComputedStyle(document.documentElement);
-    return {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-        datasets: [
-            {
-                label: 'First Dataset',
-                data: [65, 59, 80, 81, 56, 55, 40],
-                fill: true,
-                tension: 0.4,
-                borderColor: documentStyle.getPropertyValue('--red-500'),
-                backgroundColor: 'rgba(249,65,68,0.2)'
-            },
-            {
-                label: 'Second Dataset',
-                data: [28, 29, 40, 19, 40, 27, 26],
-                fill: true,
-                tension: 0.4,
-                borderColor: documentStyle.getPropertyValue('--yellow-500'),
-                backgroundColor: 'rgba(249,199,79,0.2)'
-            },
-            {
-                label: 'Third Dataset',
-                data: [12, 51, 62, 33, 21, 62, 45],
-                fill: true,
-                borderColor: documentStyle.getPropertyValue('--orange-500'),
-                tension: 0.4,
-                backgroundColor: 'rgba(255,167,38,0.2)'
-            }
-        ]
-    };
-};
 const setChartOptions = () => {
     const documentStyle = getComputedStyle(document.documentElement);
     return {

@@ -20,7 +20,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import dayjs from 'dayjs';
-import dayjs_ru from'dayjs/locale/ru';
+
 
 const props = defineProps({
     date: {
@@ -39,7 +39,6 @@ const props = defineProps({
 
 const day = computed(() => {
     const date = dayjs(props.date)
-    date.$L = 'ru'
     return date.format('D MMM')
 })
 
