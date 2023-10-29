@@ -36,7 +36,7 @@ import MainBlock from "@/components/blocks/MainBlock.vue";
 import Chart from 'primevue/chart';
 import Enroll from '@/components/blocks/Enroll.vue';
 import dayjs from 'dayjs';
-import { ref, onMounted, computed } from "vue";
+import { ref, onMounted } from "vue";
 
 const chartData = ref();
 const chartOptions = ref();

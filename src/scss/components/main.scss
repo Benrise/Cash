@@ -5,6 +5,7 @@
     justify-content: center;
     flex-direction: column;
     @include adaptiveValue('gap',48,24);
+    padding: 0 rem(20) 0;
     z-index: -1;
 }
 
@@ -32,6 +33,7 @@
         align-items: center;
         justify-content: space-between;
         gap: rem(8);
+        line-height: 150%;
     }
 
 }

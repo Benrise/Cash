@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     gap: rem(32);
-    padding: rem(48);
+    @include adaptiveValue('padding', 48, 24);
     background-color: $colors-background2;
     border-radius: 24px;
     &__header {
@@ -33,8 +33,8 @@
     align-items: center;
 
     background-color: $colors-background2;
-    border-radius: rem(16);
-    padding: rem(24);
+    @include adaptiveValue('border-radius', 16, 8);
+    @include adaptiveValue('padding', 24, 12);
 
     &__date{
         display: flex;
@@ -43,22 +43,26 @@
     }
 
     &__day{
-        font-size: rem(18);
         font-weight: 600;
     }
 
     &__hour{
-        font-size: rem(14);
+        @include adaptiveValue('font-size', 14, 6);
     }
 
     &__operation{
-        font-size: rem(18);
         font-weight: 600; 
     }
 
     &__value{
-        font-size: rem(18);
         font-weight: 600;
         color: $colors-success-600;
+        text-wrap: nowrap;
+    }
+
+    &__day,
+    &__operation,
+    &__value {
+        @include adaptiveValue('font-size', 18, 10);
     }
 }

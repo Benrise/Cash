@@ -37,7 +37,7 @@ canvas,
 [class*="__container"] {
     max-width: rem($containerWidth);
     margin: 0 auto;
-    padding: rem(48);
+    @include adaptiveValue('padding', 48, 24);
 }
 
 [class*="font-weigh-regular"] {

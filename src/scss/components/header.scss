@@ -23,7 +23,7 @@
         top: 0;
         right: -100%;
         height: 100%;
-        transition: right 0.2s ease 0s;
+        transition: right 0.3s ease 0s;
         display: flex;
         justify-content: end;
         .menu__list {
@@ -65,7 +65,7 @@
             position: absolute;
             height: rem(2);
             width: 100%;
-            transition: all 0.2s ease 0s;
+            transition: all 0.3s ease 0s;
         }
         &::before {
             top: 0;
