@@ -1,5 +1,5 @@
-<template>
-    <header class="header">
+<template >
+    <header class="header" v-if="$route.meta.header === 'authorized' ">
         <div class="header__container">
             <router-link to="/" class="header__page-info">
                 Главная
@@ -16,19 +16,19 @@
                 </div>
                 <ul class="menu__list">
                     <li class="menu__item">
-                        <router-link to="/replinish" class="menu__link" :class="{ 'menu__link_active': $route.path === '/form'}">
+                        <router-link to="/replinish" class="menu__link">
                             Пополнить баланс
                         </router-link>
                     </li>
                     <li class="menu__item">
-                        <router-link to="/change-password" class="menu__link" :class="{ 'menu__link_active': $route.path === '/preview' }">
+                        <router-link to="/change-password" class="menu__link">
                             Превью
                         </router-link>
                     </li>
                     <li class="menu__item">
-                        <router-link to="/logout" class="menu__link" :class="{ 'menu__link_active': $route.path === '/preview' }">
+                        <Button link :onclick="logout" class="menu__link p-0">
                             Выйти
-                        </router-link>
+                        </Button>
                     </li>
                 </ul>
             </nav>
@@ -37,12 +37,20 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+import Button from "primevue/button";
 
 let isMenuOpen = ref(false)
+const router = useRouter()
 
 function toggleMenu() {
     document.body.classList.toggle('_lock');
     isMenuOpen.value = !isMenuOpen.value;
+}
+
+function logout() {
+    localStorage.clear()
+    router.push('/')
 }
 </script>

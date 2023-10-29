@@ -6,13 +6,13 @@
                     <div class="login__input-title">
                         Электронная почта
                     </div>
-                    <InputText class="login__input" type="text" v-model="login" />
+                    <InputText class="login__input" type="text" v-model="userdata.username" />
                 </div>
                 <div class="login__password">
                     <div class="login__input-title">
                         Пароль
                     </div>
-                    <InputText class="login__input" type="text" v-model="password" />
+                    <InputText class="login__input" type="text" v-model="userdata.password" />
                     <div class="login__footnotes">
                         <router-link to="#" class="login__footnote">
                             Забыл пароль
@@ -23,9 +23,14 @@
                     </div>
                 </div>
             </div>
-            <router-link to="/dashboard"><Button class="w-full" label="Войти"></Button></router-link>
+            <div class="login__step-buttons">
+                <Button severity="secondary" :onclick="back" icon="pi pi-chevron-left"></Button>
+                <Button class="w-full" type='button' :onclick="fakeAuth" :loading="loading"  label="Войти"></Button>
+            </div>
             <Divider> <b class="login__divider" >или</b> </Divider>
-            <Button label="Войти с помощью" icon="pi pi-google" iconPos="right"></Button>
+            <a href="https://accounts.google.com/InteractiveLogin" target="_blank">
+                <Button class="w-full" label="Войти с помощью" icon="pi pi-google" iconPos="right"></Button>
+            </a>
         </template>
     </MainBlock>
 </template>
@@ -36,9 +41,52 @@ import InputText from "primevue/inputtext";
 import Divider from "primevue/divider";
 import MainBlock from "@/components/blocks/MainBlock.vue";
 import { ref } from 'vue';
+import { useRouter } from 'vue-router'
 
-const login = ref(null);
-const password = ref(null);
+const userdata = ref({
+    username: '',
+    password: ''
+})
+
+const router = useRouter();
+const loading = ref(false)
+
+function auth() {
+    // const response = fetch('https://freefakeapi.io/authapi/login/',{
+    //     method:  'POST',
+    //     mode: 'no-cors',
+    //     redirect: 'follow',
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //     },
+    //     body: userdata.value
+    // }).then(response => {
+    //     if (response.ok){
+    //             console.log(response)
+    //             return response.json()
+    //         }
+    //     }).
+    // then(data => {
+    //     console.log(data)
+    //     localStorage.setItem('token', data.token)
+    // })
+}
+
+function back() {
+    router.go(-1)
+}
+
+function fakeAuth() {
+    loading.value = true;
+    //fetch
+    setTimeout(() => { 
+        loading.value = false;
+        localStorage.setItem('token','fakeToken123')
+        router.push('/dashboard')
+    }, 2000);
+    //check router/index.ts for valid token check
+}
+
 
 
 </script>
