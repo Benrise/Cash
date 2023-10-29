@@ -40,21 +40,14 @@ canvas,
     @include adaptiveValue('padding', 48, 24);
 }
 
-[class*="font-weigh-regular"] {
-    font-weight: 400;
-}
-
-[class*="font-weight-bold"] {
-    font-weight: 700;
-}
-
 @import '@/scss/components/header.scss';
 @import '@/scss/components/main.scss';
 @import '@/scss/components/footer.scss';
 
 @import '@/scss/pages/start-page.scss';
 @import '@/scss/pages/dashboard.scss';
+@import '@/scss/pages/login.scss';
 
-@import 'primevue/resources/themes/bootstrap4-light-blue/theme.css';
+@import 'primevue/resources/themes/arya-blue/theme.css';
 @import 'primeicons/primeicons.css';
 @import 'primeflex/primeflex.scss';

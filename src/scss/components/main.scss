@@ -13,7 +13,7 @@
     &__container{
         display: flex;
         flex-direction: column;
-        @include adaptiveValue('gap', 48, 24);
+        @include adaptiveValue('gap', 32, 16);
         border: 1px;
         border-radius: 24px;
     }
@@ -24,7 +24,7 @@
     &__elements{
         display: flex;
         flex-direction: column;
-        gap: rem(10);
+        gap: rem(24);
     }
 
     &__header{

@@ -1,0 +1,93 @@
+<template>
+    <MainBlock class="login max-w-24rem" title="Регистрация">
+        <template v-slot:elements>
+            <div class="login__inputs">
+
+                <template v-if="step === 0">
+                    <div class="login__username">
+                        <div class="login__input-title">
+                            Электронная почта
+                        </div>
+                        <InputText class="login__input" type="text" v-model="login" />
+                    </div>
+                </template>
+        
+                <template v-if="step === 1" >
+                    <div class="login__password">
+                        <div class="login__input-title">
+                            Пароль
+                        </div>
+                        <InputText class="login__input" type="text" v-model="password" />
+                    </div>
+                    <div class="login__password">
+                        <div class="login__input-title">
+                            Подвердите пароль
+                        </div>
+                        <InputText class="login__input" type="text" v-model="passwordRepeat" />
+                    </div>
+                </template>
+
+                <template v-if="step === 2" >
+                    <div class="login__password">
+                        <div class="login__input-title">
+                            Код верификации (выслан на эл. почту)
+                        </div>
+                        <InputText class="login__input" type="text" v-model="password" />
+                        <div class="login__footnotes">
+                            <router-link to="#" class="login__footnote">
+                                Не пришел код?
+                            </router-link>
+                            <Button label="Отправить повторно" link class="login__footnote login__footnote_link p-0"/>
+                        </div>
+                    </div>
+                </template>
+
+
+            </div>
+            
+            <div class="login__step-buttons">
+                <Button severity="secondary" v-if="step != 0" :onclick="prevStep" icon="pi pi-chevron-left"></Button>
+                <Button v-if="step === 2" class="w-full" :onclick="nextStep" label="Далее"></Button>
+            </div>
+            <template v-if="step < 2">
+                <Divider> <b class="login__divider" >или</b> </Divider>
+                <Button label="Войти с помощью" icon="pi pi-google" iconPos="right"></Button>
+                <div class="login__footnotes">
+                    <div class="login__footnote">
+                        Уже есть аккаунт? <router-link class="login__footnote_link" to="/login">Войти</router-link>
+                    </div>
+                </div>
+            </template>
+        </template>
+    </MainBlock>
+</template>
+
+<script setup lang="ts">
+import Button from "primevue/button";
+import InputText from "primevue/inputtext";
+import Divider from "primevue/divider";
+import MainBlock from "@/components/blocks/MainBlock.vue";
+import { useRouter } from 'vue-router'
+import { ref } from 'vue';
+
+const login = ref(null);
+const password = ref(null);
+const passwordRepeat = ref(null);
+const step = ref(0);
+const route = useRoute();
+const userData = ref(null)
+
+function nextStep() {
+    if (step.value == 2){
+        
+    }
+    else
+        step.value++;
+}
+function prevStep() {
+  step.value--;
+}
+
+</script>
+
+<style scoped></style>

@@ -2,7 +2,7 @@
     <MainBlock center title="Добро пожаловать!">
         <template v-slot:elements>
             <div class="user-type-select">
-                <router-link to="/  " class="user-type-select__type">
+                <router-link to="/login" class="user-type-select__type">
                     <div class="user-type-select__logo">
                         <i class="pi pi-user"></i>
                     </div>

@@ -1,39 +1,46 @@
 <template>
-  <div class="flex flex-column md:flex-row">
-    <div
-      class="w-full md:w-5 flex flex-column align-items-center justify-content-center gap-3 py-5"
-    >
-      <div class="flex flex-wrap justify-content-center align-items-center gap-2">
-        <label class="w-6rem">Username</label>
-        <InputText id="username" type="text" class="w-12rem" />
-      </div>
-      <div class="flex flex-wrap justify-content-center align-items-center gap-2">
-        <label class="w-6rem">Password</label>
-        <InputText id="password" type="password" class="w-12rem" />
-      </div>
-      <Button label="Login" icon="pi pi-user" class="w-10rem mx-auto"></Button>
-    </div>
-    <div class="w-full md:w-2">
-      <Divider layout="vertical" class="hidden md:flex"><b>OR</b></Divider>
-      <Divider layout="horizontal" class="flex md:hidden" align="center"
-        ><b>OR</b></Divider
-      >
-    </div>
-    <div class="w-full md:w-5 flex align-items-center justify-content-center py-5">
-      <Button
-        label="Sign Up"
-        icon="pi pi-user-plus"
-        severity="success"
-        class="w-10rem"
-      ></Button>
-    </div>
-  </div>
+    <MainBlock class="login max-w-24rem" title="Вход">
+        <template v-slot:elements>
+            <div class="login__inputs">
+                <div class="login__username">
+                    <div class="login__input-title">
+                        Электронная почта
+                    </div>
+                    <InputText class="login__input" type="text" v-model="login" />
+                </div>
+                <div class="login__password">
+                    <div class="login__input-title">
+                        Пароль
+                    </div>
+                    <InputText class="login__input" type="text" v-model="password" />
+                    <div class="login__footnotes">
+                        <router-link to="#" class="login__footnote">
+                            Забыл пароль
+                        </router-link>
+                        <router-link to="/register">
+                            <Button link class="login__footnote login__footnote_link p-0" label="Регистрация"></Button>
+                        </router-link>
+                    </div>
+                </div>
+            </div>
+            <router-link to="/dashboard"><Button class="w-full" label="Войти"></Button></router-link>
+            <Divider> <b class="login__divider" >или</b> </Divider>
+            <Button label="Войти с помощью" icon="pi pi-google" iconPos="right"></Button>
+        </template>
+    </MainBlock>
 </template>
 
 <script setup lang="ts">
 import Button from "primevue/button";
 import InputText from "primevue/inputtext";
 import Divider from "primevue/divider";
+import MainBlock from "@/components/blocks/MainBlock.vue";
+import { ref } from 'vue';
+
+const login = ref(null);
+const password = ref(null);
+
+
 </script>
 
 <style scoped></style>

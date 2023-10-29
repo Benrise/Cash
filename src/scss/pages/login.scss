@@ -1,0 +1,53 @@
+.login {
+    &__inputs {
+        display: flex;
+        flex-direction: column;
+        gap: rem(24);
+    }
+    &__input-title {
+        font-size: rem(14);
+    }
+
+    &__username,
+    &__password {
+        display: flex;
+        flex-direction: column;
+        gap: rem(10);
+    }
+
+    &__input {
+        background-color: $colors-background;
+        border: 1px solid $colors-gray;
+    }
+
+    &__footnotes {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    &__footnote {
+        font-size: rem(12);
+        display: flex;
+        align-items: center;
+        gap: rem(6);
+    }
+    &__footnote_link {
+        color: #278fff !important;
+    }
+
+    &__divider {
+        background-color: $colors-background;
+        padding: 0 rem(12) 0;
+        font-size: rem(18);
+    }
+
+    &__step-buttons{
+        width: 100%;
+        display: flex;
+        gap: rem(6);
+    }
+}
+
+
+
