@@ -22,7 +22,7 @@
                     </li>
                     <li class="menu__item">
                         <router-link to="/change-password" class="menu__link">
-                            Превью
+                            Сменить пароль
                         </router-link>
                     </li>
                     <li class="menu__item">

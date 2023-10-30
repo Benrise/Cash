@@ -1,9 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700&family=Inter:wght@400;600&family=Montserrat:wght@400;500;700&display=swap&subset=cyrillic-ext');
 
-@import 'reset.scss';
+@import 'primevue/resources/themes/arya-blue/theme.css';
+@import 'primeicons/primeicons.css';
+@import 'primeflex/primeflex.scss';
+
 @import 'variables.scss';
 @import 'mixins.scss';
-
+@import 'reset.scss';
 
 body {
     color: white;
@@ -47,7 +50,3 @@ canvas,
 @import '@/scss/pages/start-page.scss';
 @import '@/scss/pages/dashboard.scss';
 @import '@/scss/pages/login.scss';
-
-@import 'primevue/resources/themes/arya-blue/theme.css';
-@import 'primeicons/primeicons.css';
-@import 'primeflex/primeflex.scss';

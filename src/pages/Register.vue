@@ -4,11 +4,11 @@
             <div class="login__inputs">
 
                 <template v-if="step === 0">
-                    <div class="login__username">
+                    <div class="login__email">
                         <div class="login__input-title">
                             Электронная почта
                         </div>
-                        <InputText class="login__input" type="text" v-model="userdata.username" />
+                        <InputText class="login__input" type="text" v-model="emailModel" />
                     </div>
                 </template>
         
@@ -17,13 +17,27 @@
                         <div class="login__input-title">
                             Пароль
                         </div>
-                        <InputText class="login__input" type="text" v-model="userdata.password" />
+                        <Password class="login__input" v-model="passwordModel" />
                     </div>
                     <div class="login__password">
                         <div class="login__input-title">
                             Подвердите пароль
                         </div>
-                        <InputText class="login__input" type="text" v-model="passwordRepeat" />
+                        <Password :feedback="false" class="login__input" v-model="passwordRepeatModel">
+                            <template #header>
+                                <h6>Pick a password</h6>
+                            </template>
+                            <template #footer>
+                                <Divider />
+                                <p class="mt-2">Suggestions</p>
+                                <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
+                                    <li>At least one lowercase</li>
+                                    <li>At least one uppercase</li>
+                                    <li>At least one numeric</li>
+                                    <li>Minimum 8 characters</li>
+                                </ul>
+                            </template>
+                        </Password>
                     </div>
                 </template>
 
@@ -32,7 +46,7 @@
                         <div class="login__input-title">
                             Код верификации (выслан на эл. почту)
                         </div>
-                        <InputText class="login__input" type="text" v-model="confirmCode" />
+                        <InputText class="login__input" type="text" v-model="confirmCodeModel" />
                         <div class="login__footnotes">
                             <router-link to="#" class="login__footnote">
                                 Не пришел код?
@@ -50,7 +64,7 @@
                 <Button class="w-full" :onclick="nextStep"  :loading="loading"  label="Далее"></Button>
             </div>
             <template v-if="step < 2">
-                <Divider> <b class="login__divider" >или</b> </Divider>
+                <Divider class="p-0"> <b class="login__divider" >или</b> </Divider>
                 <a href="https://accounts.google.com/InteractiveLogin" target="_blank">
                     <Button  class="w-full" label="Войти с помощью" icon="pi pi-google" iconPos="right"></Button>
                 </a>
@@ -71,11 +85,15 @@ import Divider from "primevue/divider";
 import MainBlock from "@/components/blocks/MainBlock.vue";
 import { useRouter } from 'vue-router'
 import { ref } from 'vue';
+import Password from 'primevue/password';
 
-const password = ref('');
-const passwordRepeat = ref('');
+const emailModel = ref(null);
+const passwordModel = ref(null);
+const passwordRepeatModel = ref(null);
+const confirmCodeModel = ref(null)
+
 const userdata = ref({
-    username: '',
+    email: '',
     password: ''
 });
 const confirmCode = ref('')
