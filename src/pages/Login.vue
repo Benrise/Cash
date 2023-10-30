@@ -15,7 +15,7 @@
                     <div class="login__input-title">
                         Пароль
                     </div>
-                    <Password :class="{ 'p-invalid': errors.password}" v-bind="" toggleMask class="login__input" :feedback="false" v-model="passwordModel" />
+                    <Password :class="{ 'p-invalid': errors.password}" v-bind="password" toggleMask class="login__input" :feedback="false" v-model="passwordModel" />
                     <small class="p-error  text-xs">
                         {{ errors.password }}
                     </small>
@@ -47,7 +47,7 @@ import InputText from "primevue/inputtext";
 import Password from 'primevue/password';
 import Divider from "primevue/divider";
 import MainBlock from "@/components/blocks/MainBlock.vue";
-import { useForm, useField } from 'vee-validate';
+import { useForm } from 'vee-validate';
 import * as yup from 'yup';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router'
@@ -70,32 +70,29 @@ const loading = ref(false);
 const emailModel = ref(null);
 const passwordModel = ref(null);
 
-// function onSubmit() {
-    // if (!emailModel.value || !passwordModel.value) return
-    // userdata.value.email = emailModel.value;
-    // userdata.value.password = passwordModel.value;
-    // loading.value = true;
-    // const response = fetch('https://freefakeapi.io/authapi/login/',{
-    //     method:  'POST',
-    //     mode: 'no-cors',
-    //     redirect: 'follow',
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //     },
-    //     body: userdata.value
-    // }).then(response => {
-    //     if (response.ok){
-    //             console.log(response)
-    //             return response.json()
-    //         }
-    //     }).
-    // then(data => {
-    //     console.log(data)
-    //     localStorage.setItem('token', data.token)
-    //     loading.value = false;
-    //     router.push('/dashboard')
-    // })
-// }
+// const onSubmit = handleSubmit((values) => {
+//     loading.value = true;
+//     const response = fetch('https://freefakeapi.io/authapi/login/',{
+//         method:  'POST',
+//         mode: 'no-cors',
+//         redirect: 'follow',
+//         headers: {
+//             'Content-Type': 'application/json',
+//         },
+//         body: values
+//     }).then(response => {
+//         if (response.ok){
+//                 console.log(response)
+//                 return response.json()
+//             }
+//         }).
+//     then(data => {
+//         console.log(data)
+//         localStorage.setItem('token', data.token)
+//         loading.value = false;
+//         router.push('/dashboard')
+//     })
+// }) 
 
 function back() {
     router.go(-1)
@@ -108,7 +105,7 @@ const onSubmit = handleSubmit((values) => {
         loading.value = false;
         localStorage.setItem('token','fakeToken123')
         router.push('/dashboard')
-    }, 2000);
+    }, 1500);
 });
 
 </script>
