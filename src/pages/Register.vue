@@ -20,7 +20,7 @@
                         <div class="login__input-title">
                             Пароль
                         </div>
-                        <Password :class="{ 'p-invalid': errors.password}"  v-bind="password" :feedback="false" class="login__input" v-model="passwordModel" />
+                        <Password :class="{ 'p-invalid': errors.password}"  @copy.prevent @paste.prevent v-bind="password" :feedback="false" class="login__input" v-model="passwordModel" />
                         <small class="p-error  text-xs">
                             {{ errors.password }}
                         </small>
@@ -29,7 +29,7 @@
                         <div class="login__input-title">
                             Подвердите пароль
                         </div>
-                        <Password :class="{ 'p-invalid': errors.repeatPassword}" v-bind="repeatPassword" :feedback="false" class="login__input" v-model="repeatPasswordModel">
+                        <Password :class="{ 'p-invalid': errors.repeatPassword}" @copy.prevent @paste.prevent v-bind="repeatPassword" :feedback="false" class="login__input" v-model="repeatPasswordModel">
                         </Password>
                         <small class="p-error  text-xs">
                             {{ errors.repeatPassword }}
@@ -42,7 +42,7 @@
                         <div class="login__input-title">
                             Код верификации (выслан на эл. почту)
                         </div>
-                        <InputText :class="{ 'p-invalid': errors.code}" v-bind="code" class="login__input" type="text" v-model="codeModel" />
+                        <InputNumber :class="{ 'p-invalid': errors.code}" inputId="integeronly"  v-bind="code" class="login__input" type="text" v-model="codeModel" />
                         <small class="p-error  text-xs">
                             {{ errors.code }}
                         </small>
@@ -87,6 +87,7 @@ import { ref, computed } from 'vue';
 import { useForm} from 'vee-validate';
 import * as yup from 'yup';
 import Password from 'primevue/password';
+import InputNumber from 'primevue/inputnumber';
 
 
 const loading = ref(false)
